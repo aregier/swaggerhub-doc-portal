@@ -11,45 +11,23 @@ class App extends Component {
         definitionList: null,
         definitionLink: "https://petstore.swagger.io/v2/swagger.json"
       }
-      this.swaggerhub = this.swaggerhub.bind(this)
-      this.getOrganizationData = this.getOrganizationData.bind(this)
+      this.getOrganizationApis = this.getOrganizationApis.bind(this)
       this.updateDefinitionLink = this.updateDefinitionLink.bind(this)
-    }
+  }
 
   componentWillMount() {
     this.setState({
       organizationConfig:  Config.orgData,
     })
+    this.updateDefinitionLink(Config.orgData.apis.filter(a => a.default)[0].uri);
   }
-
-  swaggerhub(inputMethod, inputResource, inputParams) {
-    let url = ""
-    if (inputParams) {
-      url = "https://api.swaggerhub.com/apis/" + inputResource + "?" + inputParams
-    } else {
-      url = "https://api.swaggerhub.com/apis/" + inputResource
-    }
-    
-    return fetch(url, {
-        method: inputMethod
-    }).then(response => {
-      if (response.ok) {
-        return response.json()
-      } throw new Error('There was an issue requesting the API')
-    }).then(json => {
-      return json
-    })
-  }
-
-  getOrganizationData(organization) {
-    let inputParams = "page=0&limit=10&sort=NAME&order=ASC"
-    let inputResource = organization;
-  
-    this.swaggerhub('GET', inputResource, inputParams).then(response => {
-      this.setState({
-        definitionList: response.apis
-      })
-    })
+ 
+  getOrganizationApis(organization) {
+    // Note: Leave method to allow for dynamic retrieval from an org in platforms other than swaggerhub (e.g. Azure API Management)
+    // return static-defined apis from config
+    this.setState({
+      definitionList: organization.apis,
+    });
   }
 
   updateDefinitionLink(newLink) {
@@ -65,7 +43,7 @@ class App extends Component {
           organizationConfig={this.state.organizationConfig}
           definitionList={this.state.definitionList}
           updateDefinitionLink={this.updateDefinitionLink}
-          getOrganizationData={this.getOrganizationData}
+          getOrganizationApis={this.getOrganizationApis}
         />
         
         <div id="api-data">

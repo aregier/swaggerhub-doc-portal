@@ -3,6 +3,19 @@
         "orgName": "The_Empire",
         "displayName": "The Galactic Empire",
         "displayTag": "Home of the Galaxies Greatest APIs",
-        "displayImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Emblem_of_the_First_Galactic_Empire.svg/220px-Emblem_of_the_First_Galactic_Empire.svg.png"
+        "displayImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Emblem_of_the_First_Galactic_Empire.svg/220px-Emblem_of_the_First_Galactic_Empire.svg.png",
+        "apis": [
+            {
+                "uri": "/apis/darth_library.json",
+                "default": true
+            },
+            {
+                "uri": "/apis/darth_ship.json"
+            },
+            {
+                "uri": "https://api.swaggerhub.com/apis/The_Empire/Human_etc_Resources/2.0.0",
+                "default": false
+            }
+        ]
     }
 }

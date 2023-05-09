@@ -2,8 +2,10 @@
 import React from 'react';
 
 const APILink = props => {
-    let name = props.apiLinkData.name
-    let apiLink = props.apiLinkData.properties[0].url
+    // TODO: Get name of api from inside the openapi documentation itself
+    // let name = props.apiLinkData.name
+    let name = "test"
+    let apiLink = props.apiLinkData.uri
 
     function handleClick() {
       props.updateDefinitionLink(apiLink)
