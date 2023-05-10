@@ -1,0 +1,18 @@
+{
+    "apis": [
+        {
+            "name": "Darth Library",
+            "uri": "/apis/darth_library.json",
+            "default": true
+        },
+        {
+            "name": "Darth Ship Store",
+            "uri": "/apis/darth_ship.json"
+        },
+        {
+            "name": "Human (and other) Resources",
+            "uri": "https://api.swaggerhub.com/apis/The_Empire/Human_etc_Resources/2.0.0",
+            "default": false
+        }
+    ]
+}

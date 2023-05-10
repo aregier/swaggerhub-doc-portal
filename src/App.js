@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SwaggerUI from 'swagger-ui-react';
-import Config from './organization_config.json';
+import OrgConfig from './organization_config.json';
+import ApiConfig from './api_config.json';
 import Sidebar from './Sidebar.js'
 
 class App extends Component {
@@ -17,16 +18,16 @@ class App extends Component {
 
   componentWillMount() {
     this.setState({
-      organizationConfig:  Config.orgData,
+      organizationConfig: OrgConfig.orgData
     })
-    this.updateDefinitionLink(Config.orgData.apis.filter(a => a.default)[0].uri);
+    this.updateDefinitionLink(ApiConfig.apis.filter(a => a.default)[0].uri);
   }
  
   getOrganizationApis(organization) {
-    // Note: Leave method to allow for dynamic retrieval from an org in platforms other than swaggerhub (e.g. Azure API Management)
+    // Note: Leave method to allow for dynamic retrieval at runtime from an org in platforms other than swaggerhub (e.g. Azure API Management)
     // return static-defined apis from config
     this.setState({
-      definitionList: organization.apis,
+      definitionList: ApiConfig.apis,
     });
   }
 
